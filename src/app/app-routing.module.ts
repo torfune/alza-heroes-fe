@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroesListComponent } from './heroes-list/heroes-list.component';
-import { CreateHeroComponent } from './create-hero/create-hero.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HeroesListComponent } from './components/heroes-list/heroes-list.component';
+import { CreateHeroComponent } from './components/create-hero/create-hero.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
