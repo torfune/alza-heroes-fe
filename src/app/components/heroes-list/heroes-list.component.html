@@ -1,3 +1,32 @@
 <h2>Heroes list</h2>
 
-<p *ngFor="let hero of heroes$ | async">{{ hero.name }}</p>
+<app-spinner *ngIf="loading$ | async; else content"></app-spinner>
+
+<ng-template #content>
+  <div class="content-wrapper">
+    <div>
+      <div *ngFor="let hero of heroes$ | async">
+        <div
+          class="list-item"
+          [ngClass]="{ active: activeHero && activeHero._id === hero._id }"
+          (click)="selectHero(hero)"
+        >
+          <div class="id">
+            {{ hero._id }}
+          </div>
+          <div class="name">
+            {{ hero.name }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="activeHero" class="selected-hero-detail">
+      <p>{{ activeHero.name | uppercase }} is my hero</p>
+
+      <a [routerLink]="'/heroes/' + activeHero._id">
+        <app-button text="View Details" theme="light"></app-button>
+      </a>
+    </div>
+  </div>
+</ng-template>

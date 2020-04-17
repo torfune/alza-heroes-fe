@@ -15,6 +15,7 @@ import { environment } from '../environments/environment';
 import { rootState } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { HeroesEffects } from './store/heroes/heroes.effects';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeroesEffects } from './store/heroes/heroes.effects';
     HeroesListComponent,
     HeaderComponent,
     ButtonComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

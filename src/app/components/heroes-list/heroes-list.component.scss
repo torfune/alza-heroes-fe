@@ -1,0 +1,60 @@
+@import '../../../constants.scss';
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-item {
+  display: flex;
+  width: 28rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+
+  > .id {
+    background: $color-primary;
+    color: #fff;
+    width: 4rem;
+    padding: 1rem 0;
+    text-align: center;
+    font-weight: 600;
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+  }
+
+  > .name {
+    background: $color-grey-light;
+    color: $color-primary;
+    padding: 1rem;
+    font-weight: 600;
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+    flex-grow: 1;
+  }
+
+  &.active {
+    > {
+      .name {
+        background: $color-secondary;
+        color: #fff;
+
+        &:hover {
+          background: $color-secondary;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    > .name {
+      background: $color-grey-dark;
+    }
+  }
+}
+
+.selected-hero-detail {
+  > p {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+}
