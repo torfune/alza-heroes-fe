@@ -1,0 +1,30 @@
+<header>
+  <h1>Tour of Heroes</h1>
+  <p>
+    Created by Matěj Strnad for Alza<br />
+    as part of an interview process
+  </p>
+
+  <nav>
+    <a routerLink="/">
+      <app-button
+        text="Dashboard"
+        [theme]="activePath === '' ? 'dark' : 'light'"
+      ></app-button>
+    </a>
+
+    <a routerLink="/heroes">
+      <app-button
+        text="Heroes"
+        [theme]="activePath === '/heroes' ? 'dark' : 'light'"
+      ></app-button>
+    </a>
+
+    <a routerLink="/create-hero">
+      <app-button
+        text="Create Hero"
+        [theme]="activePath === '/create-hero' ? 'dark' : 'light'"
+      ></app-button>
+    </a>
+  </nav>
+</header>

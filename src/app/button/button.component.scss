@@ -1,0 +1,27 @@
+@import '../../constants.scss';
+
+button {
+  width: 15rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.light {
+    background: $color-grey-light;
+
+    &:hover {
+      background: $color-grey-dark;
+    }
+  }
+
+  &.dark {
+    background: $color-primary;
+    color: #fff;
+
+    &:hover {
+      background: $color-secondary;
+    }
+  }
+}
