@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootState } from 'src/app/store';
 import { Hero } from 'src/app/services/backend.service';
+import { getHeroesListStart } from 'src/app/store/heroes/heroes.actions';
 
 @Component({
   selector: 'app-heroes-list',
@@ -16,7 +17,7 @@ export class HeroesListComponent implements OnInit {
   constructor(private store: Store<RootState>) {}
 
   ngOnInit() {
-    this.store.dispatch({ type: '[Heroes] Get List - start' });
+    this.store.dispatch(getHeroesListStart());
   }
 
   selectHero(hero: Hero) {

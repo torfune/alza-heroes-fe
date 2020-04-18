@@ -3,18 +3,16 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { BackendService } from '../../services/backend.service';
+import { getHeroesListStart, getHeroesListSuccess } from './heroes.actions';
 
 @Injectable()
 export class HeroesEffects {
   getList$ = createEffect(() =>
     this.actions$.pipe(
-      ofType('[Heroes] Get List - start'),
+      ofType(getHeroesListStart.type),
       mergeMap(() =>
         this.backendService.getHeroesList().pipe(
-          map(heroes => ({
-            type: '[Heroes] Get List - success',
-            payload: heroes,
-          })),
+          map(heroes => getHeroesListSuccess({ payload: heroes })),
           catchError(() => EMPTY)
         )
       )

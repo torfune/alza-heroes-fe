@@ -1,6 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { getListStart, getListSuccess, getListFailure } from './heroes.actions';
 import { Hero } from 'src/app/services/backend.service';
+import {
+  getHeroesListStart,
+  getHeroesListSuccess,
+  getHeroesListFailure,
+} from './heroes.actions';
 
 export const initialState: {
   loading: boolean;
@@ -21,14 +25,14 @@ export const heroesReducer = createReducer(
 
   // Get List
   on(
-    getListStart,
+    getHeroesListStart,
     (state): HeroesState => ({
       ...state,
       loading: true,
     })
   ),
   on(
-    getListSuccess,
+    getHeroesListSuccess,
     (state, action): HeroesState => ({
       ...state,
       loading: false,
@@ -36,7 +40,7 @@ export const heroesReducer = createReducer(
     })
   ),
   on(
-    getListFailure,
+    getHeroesListFailure,
     (state, action): HeroesState => ({
       ...state,
       loading: false,

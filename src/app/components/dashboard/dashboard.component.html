@@ -1,1 +1,15 @@
-<h2>Dashboard</h2>
+<h2>Top heroes</h2>
+
+<app-spinner *ngIf="loading$ | async; else content"></app-spinner>
+
+<ng-template #content>
+  <div class="hero-cards">
+    <a
+      *ngFor="let hero of (heroes$ | async).slice(0, 4)"
+      [routerLink]="'/heroes/' + hero._id"
+      class="card"
+    >
+      {{ hero.name }}
+    </a>
+  </div>
+</ng-template>
