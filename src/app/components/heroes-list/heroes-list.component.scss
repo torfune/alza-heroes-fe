@@ -37,14 +37,14 @@
   }
 
   &.active {
-    > {
-      .name {
-        background: $color-secondary;
-        color: #fff;
+    .name {
+      background: $color-secondary;
+      color: #fff;
+    }
 
-        &:hover {
-          background: $color-secondary;
-        }
+    &:hover {
+      > .name {
+        background: $color-secondary;
       }
     }
   }
