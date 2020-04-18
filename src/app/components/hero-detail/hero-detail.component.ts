@@ -17,6 +17,7 @@ import { filter, take, first } from 'rxjs/operators';
 export class HeroDetailComponent implements OnInit {
   loading$ = this.store.select(state => state.heroes.loading);
   hero$ = this.store.select(state => state.heroes.detail);
+  error$ = this.store.select(state => state.heroes.error);
   name = '';
 
   constructor(private store: Store<RootState>, private route: ActivatedRoute) {}

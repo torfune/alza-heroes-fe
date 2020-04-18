@@ -11,6 +11,7 @@ import { getHeroesListStart } from 'src/app/store/heroes/heroes.actions';
 export class DashboardComponent implements OnInit {
   loading$ = this.store.select(state => state.heroes.loading);
   heroes$ = this.store.select(state => state.heroes.list);
+  error$ = this.store.select(state => state.heroes.error);
 
   constructor(private store: Store<RootState>) {}
 

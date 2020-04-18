@@ -7,4 +7,6 @@
   </div>
 
   <app-button text="Save" theme="dark" [isSubmit]="true"></app-button>
+
+  <p *ngIf="error$ | async" class="error-message">{{ error$ | async }}</p>
 </form>

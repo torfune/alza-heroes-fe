@@ -31,8 +31,8 @@ export class HeroesEffects {
       mergeMap(() =>
         this.backendService.getHeroesList().pipe(
           map(heroes => getHeroesListSuccess({ heroes })),
-          catchError(({ error }) =>
-            of(getHeroesListFailure({ error: error.message }))
+          catchError(() =>
+            of(getHeroesListFailure({ error: 'List fetch failed' }))
           )
         )
       )
@@ -46,8 +46,8 @@ export class HeroesEffects {
       mergeMap(({ id }) =>
         this.backendService.getHeroDetail(id).pipe(
           map(hero => getHeroDetailSuccess({ hero })),
-          catchError(({ error }) =>
-            of(getHeroDetailFailure({ error: error.message }))
+          catchError(() =>
+            of(getHeroDetailFailure({ error: 'Detail fetch failed' }))
           )
         )
       )
@@ -62,8 +62,8 @@ export class HeroesEffects {
         this.backendService.createHero(name).pipe(
           map(() => createHeroSuccess()),
           tap(() => this.router.navigateByUrl('/heroes')),
-          catchError(({ error }) =>
-            of(createHeroFailure({ error: error.message }))
+          catchError(() =>
+            of(createHeroFailure({ error: 'Create request failed' }))
           )
         )
       )
@@ -77,8 +77,8 @@ export class HeroesEffects {
       mergeMap(({ id, name }) =>
         this.backendService.updateHero(id, name).pipe(
           map(hero => updateHeroSuccess({ hero })),
-          catchError(({ error }) =>
-            of(updateHeroFailure({ error: error.message }))
+          catchError(() =>
+            of(updateHeroFailure({ error: 'Update request failed' }))
           )
         )
       )
@@ -93,8 +93,8 @@ export class HeroesEffects {
         this.backendService.deleteHero(id).pipe(
           map(() => deleteHeroSuccess()),
           tap(() => this.router.navigateByUrl('/heroes')),
-          catchError(({ error }) =>
-            of(deleteHeroFailure({ error: error.message }))
+          catchError(() =>
+            of(deleteHeroFailure({ error: 'Delete request failed' }))
           )
         )
       )

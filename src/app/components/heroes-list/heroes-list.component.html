@@ -29,4 +29,6 @@
       </a>
     </div>
   </div>
+
+  <p *ngIf="error$ | async" class="error-message">{{ error$ | async }}</p>
 </ng-template>

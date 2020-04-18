@@ -12,4 +12,6 @@
       <span>{{ hero.name }}</span>
     </a>
   </div>
+
+  <p *ngIf="error$ | async" class="error-message">{{ error$ | async }}</p>
 </ng-template>
