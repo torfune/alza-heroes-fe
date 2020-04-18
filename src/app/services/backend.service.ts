@@ -17,4 +17,8 @@ export class BackendService {
   getHeroesList() {
     return this.http.get<Hero[]>(`${BASE_URL}/heroes`);
   }
+
+  createHero(name: string) {
+    return this.http.post<Hero>(`${BASE_URL}/heroes`, { name });
+  }
 }

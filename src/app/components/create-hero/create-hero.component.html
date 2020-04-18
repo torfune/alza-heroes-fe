@@ -1,1 +1,10 @@
-<h2>Create hero</h2>
+<h2>Create new hero</h2>
+
+<form (submit)="handleSubmit()">
+  <div class="form-fields">
+    <label>Name:</label>
+    <input name="name" [(ngModel)]="name" />
+  </div>
+
+  <app-button text="Save" theme="dark" [isSubmit]="true"></app-button>
+</form>

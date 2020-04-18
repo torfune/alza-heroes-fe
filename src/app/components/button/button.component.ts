@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() text: string;
-  @Input() theme: 'light' | 'dark';
+  @Input() theme: 'light' | 'dark' = 'light';
+  @Input() isSubmit = false;
 
   constructor() {}
 

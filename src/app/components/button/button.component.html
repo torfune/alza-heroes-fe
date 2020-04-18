@@ -1,1 +1,3 @@
-<button [class]="theme">{{ text }}</button>
+<button [class]="theme" [type]="isSubmit ? 'submit' : 'button'">
+  {{ text }}
+</button>
