@@ -12,7 +12,7 @@ export class CreateHeroComponent {
 
   constructor(private store: Store) {}
 
-  handleSubmit() {
-    this.store.dispatch(createHeroStart({ payload: this.name }));
+  createHero() {
+    this.store.dispatch(createHeroStart({ name: this.name }));
   }
 }

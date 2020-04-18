@@ -1,0 +1,20 @@
+form {
+  margin-bottom: 2rem;
+}
+
+.field-row {
+  display: flex;
+  margin-bottom: 1rem;
+  align-items: center;
+
+  > label {
+    display: inline-block;
+    width: 6rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}

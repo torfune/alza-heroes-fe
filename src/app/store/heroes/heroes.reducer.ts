@@ -1,12 +1,21 @@
 import { createReducer, on } from '@ngrx/store';
 import { Hero } from 'src/app/services/backend.service';
 import {
-  getHeroesListStart,
-  getHeroesListSuccess,
-  getHeroesListFailure,
+  createHeroFailure,
   createHeroStart,
   createHeroSuccess,
-  createHeroFailure,
+  deleteHeroFailure,
+  deleteHeroStart,
+  deleteHeroSuccess,
+  getHeroDetailFailure,
+  getHeroDetailStart,
+  getHeroDetailSuccess,
+  getHeroesListFailure,
+  getHeroesListStart,
+  getHeroesListSuccess,
+  updateHeroFailure,
+  updateHeroStart,
+  updateHeroSuccess,
 } from './heroes.actions';
 
 export const initialState: {
@@ -37,18 +46,44 @@ export const heroesReducer = createReducer(
   ),
   on(
     getHeroesListSuccess,
-    (state, action): HeroesState => ({
+    (state, { heroes }): HeroesState => ({
       ...state,
       loading: false,
-      list: action.payload,
+      list: heroes,
     })
   ),
   on(
     getHeroesListFailure,
-    (state, action): HeroesState => ({
+    (state, { error }): HeroesState => ({
       ...state,
       loading: false,
-      error: action.payload,
+      error,
+    })
+  ),
+
+  // Get Detail
+  on(
+    getHeroDetailStart,
+    (state): HeroesState => ({
+      ...state,
+      loading: true,
+      error: null,
+    })
+  ),
+  on(
+    getHeroDetailSuccess,
+    (state, { hero }): HeroesState => ({
+      ...state,
+      loading: false,
+      detail: hero,
+    })
+  ),
+  on(
+    getHeroDetailFailure,
+    (state, { error }): HeroesState => ({
+      ...state,
+      loading: false,
+      error,
     })
   ),
 
@@ -70,10 +105,61 @@ export const heroesReducer = createReducer(
   ),
   on(
     createHeroFailure,
-    (state, action): HeroesState => ({
+    (state, { error }): HeroesState => ({
       ...state,
       loading: false,
-      error: action.payload,
+      error,
+    })
+  ),
+
+  // Update
+  on(
+    updateHeroStart,
+    (state): HeroesState => ({
+      ...state,
+      loading: true,
+      error: null,
+    })
+  ),
+  on(
+    updateHeroSuccess,
+    (state, { hero }): HeroesState => ({
+      ...state,
+      loading: false,
+      detail: hero,
+    })
+  ),
+  on(
+    updateHeroFailure,
+    (state, { error }): HeroesState => ({
+      ...state,
+      loading: false,
+      error,
+    })
+  ),
+
+  // Delete
+  on(
+    deleteHeroStart,
+    (state): HeroesState => ({
+      ...state,
+      loading: true,
+      error: null,
+    })
+  ),
+  on(
+    deleteHeroSuccess,
+    (state): HeroesState => ({
+      ...state,
+      loading: false,
+    })
+  ),
+  on(
+    deleteHeroFailure,
+    (state, { error }): HeroesState => ({
+      ...state,
+      loading: false,
+      error,
     })
   )
 );

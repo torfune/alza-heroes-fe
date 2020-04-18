@@ -1,1 +1,25 @@
-<h2>Hero detail</h2>
+<app-spinner *ngIf="loading$ | async; else content"></app-spinner>
+
+<ng-template #content>
+  <h2>{{ (hero$ | async).name }} detail</h2>
+
+  <form (submit)="updateHero()">
+    <div class="field-row">
+      <label>ID:</label>
+      <span>{{ (hero$ | async)._id }}</span>
+    </div>
+
+    <div class="field-row">
+      <label>NAME:</label>
+      <input name="name" [(ngModel)]="name" />
+    </div>
+
+    <div class="buttons">
+      <app-button text="Save" theme="dark" [isSubmit]="true"></app-button>
+      <a routerLink="/">
+        <app-button text="Back"></app-button>
+      </a>
+      <app-button text="Delete" (click)="deleteHero()"></app-button>
+    </div>
+  </form>
+</ng-template>

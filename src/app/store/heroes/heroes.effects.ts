@@ -11,6 +11,15 @@ import {
   getHeroesListFailure,
   getHeroesListStart,
   getHeroesListSuccess,
+  getHeroDetailFailure,
+  getHeroDetailStart,
+  getHeroDetailSuccess,
+  updateHeroStart,
+  updateHeroSuccess,
+  updateHeroFailure,
+  deleteHeroStart,
+  deleteHeroSuccess,
+  deleteHeroFailure,
 } from './heroes.actions';
 
 @Injectable()
@@ -21,9 +30,24 @@ export class HeroesEffects {
       ofType(getHeroesListStart),
       mergeMap(() =>
         this.backendService.getHeroesList().pipe(
-          map(heroes => getHeroesListSuccess({ payload: heroes })),
+          map(heroes => getHeroesListSuccess({ heroes })),
           catchError(({ error }) =>
-            of(getHeroesListFailure({ payload: error.message }))
+            of(getHeroesListFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+
+  // Get Detail
+  getHeroDetail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(getHeroDetailStart),
+      mergeMap(({ id }) =>
+        this.backendService.getHeroDetail(id).pipe(
+          map(hero => getHeroDetailSuccess({ hero })),
+          catchError(({ error }) =>
+            of(getHeroDetailFailure({ error: error.message }))
           )
         )
       )
@@ -34,12 +58,43 @@ export class HeroesEffects {
   createHero$ = createEffect(() =>
     this.actions$.pipe(
       ofType(createHeroStart),
-      mergeMap(action =>
-        this.backendService.createHero(action.payload).pipe(
+      mergeMap(({ name }) =>
+        this.backendService.createHero(name).pipe(
           map(() => createHeroSuccess()),
           tap(() => this.router.navigateByUrl('/heroes')),
           catchError(({ error }) =>
-            of(createHeroFailure({ payload: error.message }))
+            of(createHeroFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+
+  // Update
+  updateHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(updateHeroStart),
+      mergeMap(({ id, name }) =>
+        this.backendService.updateHero(id, name).pipe(
+          map(hero => updateHeroSuccess({ hero })),
+          catchError(({ error }) =>
+            of(updateHeroFailure({ error: error.message }))
+          )
+        )
+      )
+    )
+  );
+
+  // Delete
+  deleteHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteHeroStart),
+      mergeMap(({ id }) =>
+        this.backendService.deleteHero(id).pipe(
+          map(() => deleteHeroSuccess()),
+          tap(() => this.router.navigateByUrl('/heroes')),
+          catchError(({ error }) =>
+            of(deleteHeroFailure({ error: error.message }))
           )
         )
       )
