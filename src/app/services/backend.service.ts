@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-// const BASE_URL = 'http://209.250.233.140';
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'http://209.250.233.140';
 
 export interface Hero {
   _id: number;

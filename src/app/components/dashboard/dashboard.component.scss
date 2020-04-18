@@ -17,12 +17,19 @@ app-spinner {
     justify-content: center;
     align-items: center;
     background: $color-primary;
-    color: #fff;
-    font-weight: 600;
     border-radius: 0.6rem;
     width: 11rem;
     height: 11rem;
     margin: 0 1rem;
+    padding: 0 1rem;
+
+    > span {
+      color: #fff;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
     &:first-child {
       margin-left: 0;

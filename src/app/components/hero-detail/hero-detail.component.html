@@ -1,7 +1,7 @@
 <app-spinner *ngIf="loading$ | async; else content"></app-spinner>
 
 <ng-template #content>
-  <h2>{{ (hero$ | async).name }} detail</h2>
+  <h2>{{ (hero$ | async).name }}</h2>
 
   <form (submit)="updateHero()">
     <div class="field-row">

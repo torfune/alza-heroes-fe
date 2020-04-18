@@ -16,6 +16,7 @@
     color: #fff;
     width: 4rem;
     padding: 1rem 0;
+    flex-shrink: 0;
     text-align: center;
     font-weight: 600;
     border-top-left-radius: 0.4rem;
@@ -30,6 +31,9 @@
     border-top-right-radius: 0.4rem;
     border-bottom-right-radius: 0.4rem;
     flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &.active {
@@ -53,8 +57,18 @@
 }
 
 .selected-hero-detail {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
   > p {
+    width: 100%;
+    text-align: right;
     font-weight: 600;
     margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -22,7 +22,7 @@
     </div>
 
     <div *ngIf="activeHero" class="selected-hero-detail">
-      <p>{{ activeHero.name | uppercase }} is my hero</p>
+      <p>{{ activeHero.name | uppercase }}</p>
 
       <a [routerLink]="'/heroes/' + activeHero._id">
         <app-button text="View Details"></app-button>
